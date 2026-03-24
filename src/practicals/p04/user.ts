@@ -1,30 +1,26 @@
 export class User {
-  // + คือ public, - คือ private
+  // + คือ public
   public username: string;
+  // - คือ private
   private password: string;
-  private loginAttempts: number = 0; // จาก -$number LOGIN_ATTEMPTS ใน UML
+  private LOGIN_ATTEMPTS: number = 0; // ต้องเริ่มที่ 0 ตามโจทย์
 
   constructor(username: string, password: string) {
     this.username = username;
     this.password = password;
   }
 
-  // +login(password: string) : boolean
   public login(password: string): boolean {
-    // ทุกครั้งที่เรียก login ให้บวกจำนวนครั้งที่พยายาม (ตามผลลัพธ์ใน index.ts)
-    this.loginAttempts++;
-
-    // ใช้ method ภายในเพื่อตรวจสอบรหัสผ่าน
+    // สำคัญ: ต้องบวกแต้มทุกครั้งที่มีการเรียกใช้ method นี้
+    this.LOGIN_ATTEMPTS++;
     return this.validatePassword(password);
   }
 
-  // -validatePassword(password: string) : boolean
   private validatePassword(password: string): boolean {
     return this.password === password;
   }
 
-  // +getLoginAttempts() : number
   public getLoginAttempts(): number {
-    return this.loginAttempts;
+    return this.LOGIN_ATTEMPTS;
   }
 }
