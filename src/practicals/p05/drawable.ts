@@ -1,1 +1,4 @@
-export interface Drawable {}
+export interface Drawable {
+  draw(): void;
+  getArea(): number;
+}
